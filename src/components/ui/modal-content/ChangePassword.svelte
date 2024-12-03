@@ -6,7 +6,8 @@
   import { toast } from "$stores/toast";
   import { api } from "$lib/axios";
 
-  const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+  const passwordRegex =
+    /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/;
 
   export let showPasswordModal: boolean;
   export let isLoading: boolean;
@@ -26,8 +27,7 @@
     if (!passwordRegex.test(password)) {
       errors = {
         ...errors,
-        password:
-          "Password must be at least 8 characters with letters and numbers",
+        password: "Provide a strong password (e.g. John@123)",
       };
       return false;
     }

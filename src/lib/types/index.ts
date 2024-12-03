@@ -1,3 +1,5 @@
+import type { ProfileItem } from "$lib/constants/profileItem";
+
 export interface FormError {
   firstname?: string;
   lastname?: string;
@@ -13,6 +15,7 @@ export interface User {
   fullName: string;
   avatarUrl: string | null;
   provider: string;
+  address: ProfileItem[];
 }
 
 export interface Activities {

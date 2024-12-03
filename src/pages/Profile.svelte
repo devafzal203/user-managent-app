@@ -3,13 +3,12 @@
   import Modal from "$components/ui/Modal.svelte";
   import ProfileDetailCard from "$components/ui/ProfileDetailCard.svelte";
   import UserInfoEdit from "$components/ui/UserInfoEdit.svelte";
-  import { address } from "$lib/constants/profileItem";
+  import { addressDefault, type ProfileItem } from "$lib/constants/profileItem";
   import type { User } from "$lib/types";
   import Icon from "@iconify/svelte";
   import { onMount } from "svelte";
   import ChangeName from "$components/ui/modal-content/ChangeName.svelte";
   import { api } from "$lib/axios";
-  import { userStore } from "$stores/user";
   import ChangePassword from "$components/ui/modal-content/ChangePassword.svelte";
   import ChangeAvatar from "$components/ui/modal-content/ChangeAvatar.svelte";
   import { goto } from "$app/navigation";
@@ -19,6 +18,7 @@
   let showAvatarModal = false;
   let showNameModal = false;
   let showPasswordModal = false;
+  let address = addressDefault as ProfileItem[];
   $: avatarUrl = user.avatarUrl || "/profile-default.png";
 
   async function getUser() {
@@ -26,7 +26,7 @@
       isLoading = true;
       const response = await api<User>("/user/profile");
       user = response.data;
-      userStore.setUser(user);
+      address = user.address;
     } catch (error) {
       goto("/");
     } finally {
@@ -100,19 +100,24 @@
     <UserInfoEdit header="Email" title={user.email} {isLoading} disableEdit />
     <UserInfoEdit
       header="Phone"
-      title={"+09 012 23456789"}
+      title={"+1 (412) 234-5678"}
       disableEdit
       {isLoading}
     />
     <UserInfoEdit
       header="Bio"
-      title="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus velit, neque eius incidunt ullam eos voluptate! Tempo"
+      title="Please tell us a little about yourself."
       disableEdit
       {isLoading}
     />
   </div>
 
-  <ProfileDetailCard cardTitle="Address" disableEdit data={address} />
+  <ProfileDetailCard
+    cardTitle="Address"
+    disableEdit
+    data={address}
+    bind:isLoading
+  />
 </main>
 <!-- Modal -->
 <Modal showModal={showAvatarModal}>

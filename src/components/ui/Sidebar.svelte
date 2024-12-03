@@ -60,12 +60,6 @@
       handleClick: handleLogout,
       disabled: false,
     },
-    {
-      label: "Settings",
-      icon: "tabler:settings",
-      handleClick: () => {},
-      disabled: true,
-    },
   ];
 </script>
 

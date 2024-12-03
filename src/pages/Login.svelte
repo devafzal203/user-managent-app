@@ -8,15 +8,9 @@
   import Input from "$components/ui/Input.svelte";
   import LineSeprator from "$components/ui/LineSeprator.svelte";
   import { colors } from "$lib/constants/colors";
-  import { authStatus, login } from "$lib/request";
+  import { login } from "$lib/request";
   import { toast } from "$stores/toast";
   import type { FormError } from "$lib/types/index";
-  import { onMount } from "svelte";
-
-  // onMount(async () => {
-  //   const status = await authStatus();
-  //   console.log("authStatus", status);
-  // });
 
   let email = "";
   let password = "";
@@ -27,7 +21,8 @@
   let submitting = false;
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+  const passwordRegex =
+    /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/;
 
   const validateEmail = () => {
     if (!email) {
@@ -50,8 +45,7 @@
     if (!passwordRegex.test(password)) {
       errors = {
         ...errors,
-        password:
-          "Password must be at least 8 characters with letters and numbers",
+        password: "Provide a strong password (e.g. John@123)",
       };
       return false;
     }

@@ -6,9 +6,6 @@ export async function signup(payload: {
   name: string;
 }) {
   const response = await api.post(`/auth/signup`, payload);
-  const { accessToken, refreshToken } = response.data.tokens;
-  localStorage.setItem("accessToken", accessToken);
-  localStorage.setItem("refreshToken", refreshToken);
   return response.data;
 }
 

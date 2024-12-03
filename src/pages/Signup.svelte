@@ -23,7 +23,8 @@
   let submitting = false;
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+  const passwordRegex =
+    /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/;
 
   const validateName = () => {
     if (!name) {
@@ -55,8 +56,7 @@
     if (!passwordRegex.test(password)) {
       errors = {
         ...errors,
-        password:
-          "Password must be at least 8 characters with letters and numbers",
+        password: "Provide a strong password (e.g. John@123)",
       };
       return false;
     }
@@ -110,12 +110,12 @@
         await signup(payload)
           .then(() =>
             toast.addToast({
-              title: "Success",
-              description: "Registration successful",
+              title: "Registration successful",
+              description: "Please login to continue",
               type: "success",
             })
           )
-          .then(() => goto("/dashboard"));
+          .then(() => goto("/"));
       } catch (error) {
         toast.addToast({
           title: "Registration failed!",

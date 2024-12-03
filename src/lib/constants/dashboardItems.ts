@@ -42,6 +42,12 @@ const dashboardItem: DashboardItem[] = [
     icon: "tabler:chart-infographic",
     disabled: true,
   },
+  {
+    label: "Settings",
+    href: "/#",
+    icon: "tabler:settings",
+    disabled: true,
+  },
 ];
 
 export { dashboardItem, type DashboardItem };
