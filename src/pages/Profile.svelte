@@ -75,7 +75,20 @@
         <p class="text-base text-gray-500 font-rubik my-0.5">
           Software Engineer
         </p>
-        <p class="text-sm text-gray-500 font-rubik">Leeds, United Kingdom</p>
+        {#if isLoading}
+          <Icon
+            icon="svg-spinners:3-dots-scale-middle"
+            width={20}
+            height={40}
+            class="text-black"
+          />
+        {:else}
+          <p class="text-sm text-gray-500 font-rubik">
+            {address.find((entry) => entry.header === "City/State")?.item}, {address.find(
+              (entry) => entry.header === "Country"
+            )?.item}
+          </p>
+        {/if}
       </div>
     </div>
     <Edit on:click={() => toggleModal("avatar")}>Avatar</Edit>

@@ -14,9 +14,6 @@
   <div class="flex items-center justify-between w-full">
     <p class="text-lg text-gray-600 font-bold font-rubik">{cardTitle}</p>
 
-    <p class="text-sm text-gray-400 font-rubik">
-      This is your current address based on your IP
-    </p>
     <Edit disabled={disableEdit} on:click={onClickEdit} class="hidden"
       >Edit</Edit
     >
