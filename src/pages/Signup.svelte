@@ -234,7 +234,7 @@
         >
       </form>
       <LineSeprator text="OR" />
-      <SocialAuth provider="google" on:click={handleGoogleAuth} />
+      <!-- <SocialAuth provider="google" on:click={handleGoogleAuth} /> -->
       <p class="text-center font-rubik">
         Already have an account?
         <a href="/" class="underline text-primary cursor-pointer ml-1">

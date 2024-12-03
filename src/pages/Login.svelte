@@ -189,7 +189,7 @@
         >
       </form>
       <LineSeprator text="OR" />
-      <SocialAuth provider="google" on:click={handleGoogleAuth} />
+      <!-- <SocialAuth provider="google" on:click={handleGoogleAuth} /> -->
       <p class="text-center font-rubik">
         Don't have an account?
         <a href="/signup" class="underline text-primary cursor-pointer">
