@@ -24,7 +24,8 @@ This is User Management and Activity Tracking frontend application built using *
 
 ### 4. **User Interface**
 
-- Built with **SvelteKit** for SSR and fast UI.
+- Built with **SvelteKit** for Server Side Rendering and Search Engine Optimization.
+- Responsive design for both desktop and mobile devices.
 
 ### 5. **Data Privacy**
 
@@ -38,6 +39,11 @@ This is User Management and Activity Tracking frontend application built using *
 - **Authentication**: JWT (JSON Web Tokens) for secure session management
 - **HTTP Client**: Axios for API interactions with the backend
 - **Routing**: SvelteKit's built-in routing and page components
+
+## Deployment
+
+- **Vercel**: Deployed on Vercel for seamless hosting and CDN services.
+- Deployed URL: https://user-managent-app.vercel.app/
 
 ## Prerequisites
 
